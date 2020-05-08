@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Valida email</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<div class="container">
+		<form name="f1">
+			<h3>Formulário de Inscrição:</h3>
+			E-mail:
+			<input type="text" name="email" onblur="validacaoEmail(f1.email)"  maxlength="60" size='65'>			
+			<div id="message"></div>
+		</form>
+	</div>
+	<script>
+	function validacaoEmail(field) {
+		dominio = field.value.substring(field.value.indexOf("@")+ 1, field.value.length);
+		dominio = dominio.replace(".", " ");
+		let options = ["gmail", "outlook", "hotmail"]
+			
+		for (i = 0; i < options.length; i++) {
+			if (dominio.search(options[i]) !== -1 ){
+				document.getElementById("message").innerHTML="E-mail válido";
+				break;
+			} else {
+			document.getElementById("message").innerHTML="<font color='red'>E-mail inválido </font>";
+			}
+		}
+	}	
+	</script>
+</body>
+</html>
